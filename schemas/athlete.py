@@ -5,7 +5,6 @@ from datetime import date, datetime
 
 class AthleteBase(BaseModel):
     athlete_id: int
-    meet_id: int
     surname: str
     first_name: str
     other_names: Union[str, None] = None

@@ -16,6 +16,7 @@ class Meet(Base):
     max_relay_events = Column(Integer, nullable=True)
     max_total_events = Column(Integer, nullable=True)
     age_up_date = Column(Date, nullable=True)
+    stub = Column(String(20), nullable=True)
     updated_at = Column(TIMESTAMP)
     created_at = Column(TIMESTAMP)
 

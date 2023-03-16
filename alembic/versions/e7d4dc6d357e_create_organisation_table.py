@@ -11,7 +11,7 @@ from sqlalchemy import Column, Integer, Float, String, Date, DateTime, TIMESTAMP
 
 # revision identifiers, used by Alembic.
 revision = 'e7d4dc6d357e'
-down_revision = 'a5af5b44b7fc'
+down_revision = '996300c31a3a'
 branch_labels = None
 depends_on = None
 
@@ -20,9 +20,9 @@ def upgrade() -> None:
     op.create_table(
         'organisation',
         Column('organisation_id', Integer, primary_key=True),
-        Column('organisation_name', String(100), nullable='False'),
-        Column('short_name', String(50), nullable='True'),
-        Column('abbreviation', String, nullable='True'),
+        Column('organisation_name', String(100), nullable=False),
+        Column('short_name', String(50), nullable=True),
+        Column('abbreviation', String(5), nullable=True),
         Column('parent_id', Integer, ForeignKey('organisation.organisation_id'), nullable=True)
     )
 

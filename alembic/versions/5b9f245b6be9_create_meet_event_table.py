@@ -1,8 +1,7 @@
 """create meet event table
 
 Revision ID: 5b9f245b6be9
-Revises: 996300c31a3a
-Create Date: 2022-11-13 20:55:11.796857
+Revises: f3af3ad433e8
 
 """
 from alembic import op
@@ -11,7 +10,7 @@ from sqlalchemy import Column, Integer, Float, String, Date, DateTime, TIMESTAMP
 
 # revision identifiers, used by Alembic.
 revision = '5b9f245b6be9'
-down_revision = '55236cdb1e7f'
+down_revision = 'f3af3ad433e8'
 branch_labels = None
 depends_on = None
 
@@ -23,11 +22,12 @@ def upgrade() -> None:
         Column('program_number', String(4), primary_key=True),
         Column('event_name', String(100), nullable=True),
         Column('event_order', Integer, nullable=False),
-        Column('event_type_id', Integer, ForeignKey('meet_event_type.type_id'), nullable=False),
-        Column('discipline_id', Integer, ForeignKey('discipline.discipline_id'), nullable=False),
+        Column('event_type_code', String(10), ForeignKey('meet_event_type.type_code'), nullable=False),
+        Column('discipline_code', String(10), ForeignKey('discipline.discipline_code'), nullable=False),
         Column('legs', Integer, nullable=False),
-        Column('distance_id', Integer, ForeignKey('distance.distance_id'), nullable=False),
+        Column('distance_code', String(10), ForeignKey('distance.distance_code'), nullable=False),
         Column('deadline', DateTime, nullable=True),
+        Column('age_group_type_code', String(10), ForeignKey('age_group_type.age_group_type_code'), nullable=True),
         Column('updated_at', TIMESTAMP),
         Column('created_at', TIMESTAMP)
     )

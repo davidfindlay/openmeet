@@ -1,5 +1,5 @@
-from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, Integer, String, Text, TIMESTAMP, ForeignKey
+from sqlalchemy.orm import  relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.exc import InvalidRequestError
 
 from db.db import SessionLocal
@@ -10,12 +10,12 @@ from models.course import Course
 
 class Distance(Base):
     __tablename__ = "distance"
-    distance_id = Column(Integer, primary_key=True, autoincrement=True)
+    distance_code = Column(String(10), primary_key=True)
     qty = Column(Integer, nullable=False)
-    unit_id = Column(Integer, ForeignKey('unit.unit_id'), nullable=False)
-    title = Column(String(40), nullable=False)
     splits = Column(Integer, nullable=False)
-    course_id = Column(Integer, ForeignKey('course.course_id'), nullable=True)
+    unit_code = Column(String(10), ForeignKey('unit.unit_code'), nullable=False)
+    course_code = Column(String(10), ForeignKey('course.course_code'), nullable=True)
+    title = Column(String(40), nullable=False)
 
     unit = relationship("Unit", uselist=False)
     course = relationship("Course", uselist=False)

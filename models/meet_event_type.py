@@ -1,6 +1,5 @@
 from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Table, Column, Integer, String, Date, DateTime, TIMESTAMP
+from sqlalchemy import Column, String
 
 from models.base import Base
 from db.db import SessionLocal
@@ -8,7 +7,7 @@ from db.db import SessionLocal
 
 class MeetEventType(Base):
     __tablename__ = "meet_event_type"
-    type_id = Column(Integer, primary_key=True, autoincrement=True)
+    type_code = Column(String(10), primary_key=True)
     type_name = Column(String(50), nullable=False)
 
     def __eq__(self, other):

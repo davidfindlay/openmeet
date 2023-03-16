@@ -14,6 +14,7 @@ class MeetBase(BaseModel):
     max_relay_events: Union[int, None] = None
     max_total_events: Union[int, None] = None
     age_up_date: Union[date, None] = None
+    stub: Union[str, None] = None
 
     events: Union[list[MeetEventCreate], None] = None
 

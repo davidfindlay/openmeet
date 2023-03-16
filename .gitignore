@@ -130,3 +130,6 @@ dmypy.json
 
 # Jetbrains files
 .idea
+
+# SQL Lite database
+local.db

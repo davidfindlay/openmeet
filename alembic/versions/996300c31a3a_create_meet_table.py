@@ -1,8 +1,7 @@
 """create meet table
 
 Revision ID: 996300c31a3a
-Revises: 
-Create Date: 2022-11-13 19:49:45.198314
+Revises: 5b9f245b6be9
 
 """
 from alembic import op
@@ -11,7 +10,7 @@ from sqlalchemy import Column, Integer, Float, String, Date, DateTime, TIMESTAMP
 
 # revision identifiers, used by Alembic.
 revision = '996300c31a3a'
-down_revision = None
+down_revision = '5b9f245b6be9'
 branch_labels = None
 depends_on = None
 
@@ -28,6 +27,7 @@ def upgrade() -> None:
         Column('max_relay_events', Integer, nullable=True),
         Column('max_total_events', Integer, nullable=True),
         Column('age_up_date', DateTime, nullable=True),
+        Column('stub', String(20), nullable=True),
         Column('updated_at', TIMESTAMP),
         Column('created_at', TIMESTAMP)
     )

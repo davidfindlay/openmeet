@@ -6,26 +6,25 @@ from models.base import Base
 from db.db import SessionLocal
 
 
-class Discipline(Base):
-    __tablename__ = "discipline"
-    discipline_code = Column(String(10), primary_key=True)
-    discipline_name = Column(String(50), nullable=False)
-    abbreviation = Column(String(10), nullable=False)
+class AgeGroupType(Base):
+    __tablename__ = "age_group_type"
+    age_group_type_code = Column(String(10), primary_key=True)
+    age_group_type_name = Column(String(50), nullable=False)
     description = Column(Text, nullable=True)
 
     def __eq__(self, other):
-        if isinstance(other, Discipline):
+        if isinstance(other, AgeGroupType):
             return self.type_name == other.discipline_name
         else:
             return False
 
 
-class DisciplineCache(dict):
+class AgeGroupTypeCache(dict):
     def __missing__(self, key):
         try:
             print('finding %s' % key)
-            obj = self[key] = SessionLocal.query(Discipline).filter_by(discipline_name=key).one()
+            obj = self[key] = SessionLocal.query(AgeGroupType).filter_by(age_group_type_name=key).one()
             return obj
         except InvalidRequestError:
-            obj = self[key] = Discipline(key)
+            obj = self[key] = AgeGroupType(key)
             return obj
